@@ -95,7 +95,7 @@ const Board = () => {
 const App = () => {
   return (
     <div className="game-container">
-      <h1>Kółko-krzyżyk 5x5</h1>
+      <h1>Kółko i Krzyżyk 5x5</h1>
       <Board />
     </div>
   );
