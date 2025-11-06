@@ -58,3 +58,36 @@ h1 {
   margin: 0;
   font-size: 3.5rem;
 }
+.square {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border: 1px solid #ddd;
+  font-size: 2em;
+  font-weight: bold;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.square.highlight {
+  background-color: yellow; /* Kolor podświetlenia */
+}
+
+.board-row {
+  display: flex;
+}
+
+.game-status {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.game-container {
+  text-align: center;
+}
+
+.board {
+  display: inline-block;
+  border: 5px solid #000;
+}
