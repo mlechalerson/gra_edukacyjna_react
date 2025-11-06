@@ -2,7 +2,7 @@
   "name": "my-react-app",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://mlechalerson.github.io/gra_edukacyjna_react",
+  "homepage": "https://mlechalerson.github.io/gra_edukacyjna_react/my-react-app",
   "type": "module",
   "scripts": {
     "dev": "vite",
