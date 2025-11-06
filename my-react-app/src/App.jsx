@@ -12,7 +12,7 @@ const Square = ({ value, onClick, highlight }) => {
   );
 };
 
-const Board = () => {
+const Board = ({ onRestart }) => {
   const [squares, setSquares] = useState(Array(25).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [winner, setWinner] = useState(null);
@@ -40,7 +40,7 @@ const Board = () => {
 
   const calculateWinner = (squares) => {
     for (let i = 0; i < 5; i++) {
-      for (let j = 0; j < 5 - 4; j++) {
+      for (let j = 0; j < 1; j++) {
         const line = [i * 5 + j, i * 5 + j + 1, i * 5 + j + 2, i * 5 + j + 3, i * 5 + j + 4];
         if (line.every((index) => squares[index] === 'X')) return { player: 'X', line };
         if (line.every((index) => squares[index] === 'O')) return { player: 'O', line };
@@ -48,15 +48,15 @@ const Board = () => {
     }
 
     for (let j = 0; j < 5; j++) {
-      for (let i = 0; i < 5 - 4; i++) {
+      for (let i = 0; i < 1; i++) {
         const line = [i * 5 + j, (i + 1) * 5 + j, (i + 2) * 5 + j, (i + 3) * 5 + j, (i + 4) * 5 + j];
         if (line.every((index) => squares[index] === 'X')) return { player: 'X', line };
         if (line.every((index) => squares[index] === 'O')) return { player: 'O', line };
       }
     }
 
-    for (let i = 0; i < 5 - 4; i++) {
-      for (let j = 0; j < 5 - 4; j++) {
+    for (let i = 0; i < 1; i++) {
+      for (let j = 0; j < 1; j++) {
         const diag1 = [i * 5 + j, (i + 1) * 5 + j + 1, (i + 2) * 5 + j + 2, (i + 3) * 5 + j + 3, (i + 4) * 5 + j + 4];
         const diag2 = [(i + 4) * 5 + j, (i + 3) * 5 + j + 1, (i + 2) * 5 + j + 2, (i + 1) * 5 + j + 3, i * 5 + j + 4];
         if (diag1.every((index) => squares[index] === 'X')) return { player: 'X', line: diag1 };
@@ -94,15 +94,22 @@ const Board = () => {
       <div className="board">
         {renderBoard()}
       </div>
+      <button className="restart-button" onClick={onRestart}>Zrestartuj grę</button>
     </div>
   );
 };
 
 const App = () => {
+  const [gameKey, setGameKey] = useState(0);
+
+  const handleRestart = () => {
+    setGameKey(gameKey + 1);
+  };
+
   return (
     <div className="game-container">
       <h1>Kółko i Krzyżyk 5x5</h1>
-      <Board />
+      <Board key={gameKey} onRestart={handleRestart} />
     </div>
   );
 };
